@@ -43,6 +43,10 @@ const queueTime = (arrPeople, cashRegisters) => {
         return 0
     }
 
+    if(arrPeople.length <= cashRegisters){
+        return Math.max(...Object.values(arrPeople))
+    }
+
     let arrOfCashRegisters = {}
     for(let cashRegister = 1; cashRegister <= cashRegisters; cashRegister++){
         for(let i = 0; i < arrPeople.length; i++){
@@ -68,6 +72,8 @@ const queueTime = (arrPeople, cashRegisters) => {
     return Math.max(...Object.values(arrOfCashRegisters))
 }
 
+
+console.log(queueTime([11, 23, 45, 17, 8, 505, 10, 1500], 15)) // 1500
 console.log(queueTime([10, 2, 1, 3, 5, 5], 2)) // 15
 console.log(queueTime([ 26, 42, 13, 18, 48, 38, 39, 25, 39, 6, 35, 11, 7, 38, 19, 14 ], 1)) // 418
 console.log(queueTime([ 34, 31, 40, 30, 48, 2, 19, 32, 37, 13, 30, 49, 3, 13, 12, 43, 39, 22, 47 ], 4)) // 162
